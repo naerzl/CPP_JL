@@ -1,0 +1,32 @@
+.login_form {
+  padding: 50px;
+  position: absolute;
+  right: 226px;
+  top: 50%;
+  width: 580px;
+  height: 600px;
+  background-color: #fff;
+  transform: translateY(-50%);
+
+  .logo {
+    display: block;
+    margin: 60px auto 30px;
+    width: 70px;
+    height: 28px;
+    .image {
+      width: 200px;
+    }
+  }
+
+  .title {
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #303133;
+    text-align: center;
+  }
+  .login_form_button {
+    width: 480px;
+    height: 56px;
+  }
+}

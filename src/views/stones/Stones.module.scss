@@ -1,0 +1,69 @@
+.main {
+  margin-top: 64px;
+  .content {
+    margin-top: -80px;
+    .select {
+      position: relative;
+      padding: 40px;
+      width: 1338px;
+      height: 360px;
+      background: #ffffff;
+      z-index: 1;
+      .searchBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .searchButton {
+          margin-left: 10px;
+          width: 96px;
+          height: 40px;
+          background: linear-gradient(135deg, #2755c2 0%, #5782da 100%);
+          border-radius: 4px 4px 4px 4px;
+          border: none;
+          color: #ffffff;
+        }
+      }
+      .selectOption {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        .category {
+          margin-right: 20px;
+          width: 64px;
+          font-weight: bold;
+          color: #616266;
+        }
+        ul {
+          display: flex;
+          .item {
+            margin-right: 10px;
+            width: 72px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #616266;
+            border-radius: 4px 4px 4px 4px;
+            cursor: pointer;
+            &.active {
+              background: #f5f6fa url('../../assets/stones/icon_mian_xuan.png')
+                right bottom no-repeat;
+              color: #2755c2;
+            }
+          }
+        }
+      }
+    }
+    .stoneList {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px auto 40px;
+      padding: 40px;
+      width: 100%;
+      background-color: #fff;
+      .pagination {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}

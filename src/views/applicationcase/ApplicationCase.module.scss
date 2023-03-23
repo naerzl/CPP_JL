@@ -1,0 +1,23 @@
+.main {
+  margin-top: 64px;
+  .content {
+    position: relative;
+    margin: -80px auto 40px;
+    background-color: #fff;
+    padding: 40px;
+    .tag {
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .caseList {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .pagination {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

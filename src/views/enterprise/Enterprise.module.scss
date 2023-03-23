@@ -1,0 +1,77 @@
+.main {
+  margin-top: 64px;
+  .content {
+    position: relative;
+    margin: -80px auto 40px;
+    background-color: #fff;
+    padding: 40px;
+    .searchBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .searchButton {
+        margin-left: 10px;
+        width: 96px;
+        height: 40px;
+        background: linear-gradient(135deg, #2755c2 0%, #5782da 100%);
+        border-radius: 4px 4px 4px 4px;
+        border: none;
+        color: #ffffff;
+      }
+    }
+    .select {
+      display: flex;
+      margin: 20px 0 0;
+      color: #616266;
+      .left {
+        display: flex;
+        flex: 1;
+        justify-content: start;
+        li {
+          margin-right: 20px;
+          width: 136px;
+          height: 40px;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 4px 4px 4px 4px;
+          border: 1px solid transparent;
+          cursor: pointer;
+          &.active {
+            background: #f5f6fa;
+            border: 1px solid #2755c2;
+            color: #2755c2;
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex: 1;
+        justify-content: end;
+        li {
+          margin-left: 20px;
+          text-align: center;
+          line-height: 40px;
+          width: 84px;
+          height: 40px;
+          border-radius: 4px 4px 4px 4px;
+          border: 1px solid transparent;
+          cursor: pointer;
+          &.active {
+            background: #f5f6fa;
+            border: 1px solid #2755c2;
+            color: #2755c2;
+          }
+        }
+      }
+    }
+    .enterpriseList {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .pagination {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

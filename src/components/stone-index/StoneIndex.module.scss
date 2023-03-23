@@ -1,0 +1,46 @@
+.box {
+  position: relative;
+  width: 292px;
+  height: 220px;
+  overflow: hidden;
+  & > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.1s linear;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .desc {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 6px 10px;
+    background-color: rgba($color: #000000, $alpha: 0.1);
+    font-weight: bold;
+    color: #fff;
+    .company {
+      width: 100%;
+      height: 16px;
+      margin-top: 5px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      img {
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+      }
+      p {
+        font-weight: 400;
+        margin: 0;
+        font-size: 12px;
+      }
+    }
+  }
+}

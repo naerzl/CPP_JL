@@ -1,0 +1,92 @@
+.footerContainer {
+  width: 100%;
+  min-width: 1338px;
+  height: 360px;
+  background-color: #fff;
+  .records {
+    margin-top: 12px;
+    height: 40px;
+    background: #2755c2;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  .left {
+    width: 440px;
+    border-right: 1px solid #d2d5dd;
+
+    .footer_logo {
+      margin-bottom: 16px;
+      width: 120px;
+      height: 49px;
+    }
+
+    .company_name {
+      margin-bottom: 20px;
+      height: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #303133;
+    }
+
+    .description {
+      margin-bottom: 10px;
+      height: 21px;
+      line-height: 21px;
+      font-size: 14px;
+      color: #616266;
+    }
+
+    .title {
+      margin-top: 20px;
+      height: 21px;
+      line-height: 21px;
+      font-size: 14px;
+      color: #919499;
+
+      span {
+        margin-right: 6px;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    padding-top: 32px;
+    width: 898px;
+
+    dl {
+      margin-left: 100px;
+
+      dt {
+        margin-bottom: 20px;
+        height: 24px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #303133;
+        line-height: 24px;
+      }
+
+      dd {
+        margin-bottom: 10px;
+        height: 21px;
+        font-size: 14px;
+        color: #616266;
+        line-height: 21px;
+        cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+          transform: scale(1.1);
+        }
+        &:active {
+          transform: scale(0.95);
+          color: #ccc;
+        }
+      }
+    }
+  }
+}
