@@ -103,7 +103,6 @@ const Stones = () => {
         break
       case StoneOption.stoneVein:
         setReqParams((pre) => ({ ...pre, vein: obj.id }))
-
         break
       default:
         break

@@ -1,0 +1,116 @@
+.main {
+  margin-top: 64px;
+  .stoneInfoBox {
+    display: flex;
+    padding: 40px;
+    margin: 10px auto 40px;
+    width: 1338px;
+    height: 540px;
+    background: #ffffff;
+    .bigImage {
+      width: 460px;
+      height: 460px;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .smallImage {
+      margin: 0 80px 0 20px;
+      li {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 4px;
+        cursor: pointer;
+        &:nth-child(4) {
+          margin-bottom: 0;
+        }
+        &.active {
+          border: 2px solid #2755c2;
+        }
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .xuan {
+          position: absolute;
+          right: -1px;
+          bottom: -1px;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+    .stoneInfo {
+      position: relative;
+      flex: 1;
+      h3 {
+        height: 42px;
+        font-size: 28px;
+        color: #303133;
+        line-height: 42px;
+      }
+      p {
+        margin-bottom: 30px;
+        height: 24px;
+        color: #616266;
+        line-height: 24px;
+        span {
+          color: #303133;
+          margin-left: 20px;
+        }
+      }
+      .handle {
+        position: absolute;
+        bottom: 0;
+        button {
+          width: 96px;
+          height: 40px;
+          border-radius: 4px 4px 4px 4px;
+          line-height: 40px;
+          border: 0;
+          color: #fff;
+          cursor: pointer;
+          &.design {
+            background: linear-gradient(135deg, #2755c2 0%, #5782da 100%);
+            margin-right: 30px;
+          }
+          &.collect {
+            border: 1px solid #f0b00e;
+            color: #f0b00e;
+            background: #fff;
+          }
+          &.cancel {
+            background: #f0b00e;
+          }
+        }
+      }
+    }
+  }
+  .companyINfo {
+    padding: 40px;
+    margin-bottom: 40px;
+    width: 1338px;
+    height: 474px;
+    background: #ffffff;
+    .icon {
+      margin-bottom: 20px;
+      height: 44px;
+      img {
+        display: block;
+        width: 122px;
+        height: 100%;
+      }
+    }
+  }
+  .youLove {
+    margin-bottom: 40px;
+  }
+}

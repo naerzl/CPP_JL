@@ -41,7 +41,7 @@ const navList = [
   },
   {
     element: <StonesDetail></StonesDetail>,
-    path: 'stones-detail',
+    path: 'stones-detail/:id',
   },
   {
     name: 'no fond',

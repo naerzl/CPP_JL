@@ -19,3 +19,6 @@ export const reqApiCheck = () => {
 
     return request.post('/api/OAuth/token', _dataForm)
 }
+
+// 获取数据字典
+export const reqGetDictionariesData = (data: string[]) => request.post('/api/Advertise/getdictionarylistbytypecodes', data)

@@ -5,10 +5,11 @@ const StoneIndex = (props: any) => {
   const navigate = useNavigate()
   const location = useLocation()
   const handleClick = () => {
-    navigate('/home/stones-detail', {
+    navigate(`/home/stones-detail/${props.item.stoneId}`, {
       state: {
         id: props.item.stoneId,
         form: location.pathname,
+        formname: props.form,
       },
     })
   }
