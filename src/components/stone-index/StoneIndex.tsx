@@ -8,8 +8,8 @@ const StoneIndex = (props: any) => {
     navigate(`/home/stones-detail/${props.item.stoneId}`, {
       state: {
         id: props.item.stoneId,
-        form: location.pathname,
-        formname: props.form,
+        from: location.pathname,
+        fromname: props.from,
       },
     })
   }

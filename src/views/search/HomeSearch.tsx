@@ -34,6 +34,7 @@ const HomeSearch = () => {
                 ...item,
                 imageURL: item.terrazzoImage[0],
                 stoneName: item.name,
+                stoneId: item.id,
               }
             })
             setListData(newArr)
@@ -63,9 +64,7 @@ const HomeSearch = () => {
       <div className={classes.container}>
         {location.state.selectVal === '1' &&
           listData.map((item, index) => (
-            <div key={index} className={classes.componentsBox}>
-              <CompanyItem item={item}></CompanyItem>
-            </div>
+            <CompanyItem item={item} key={index}></CompanyItem>
           ))}
         {location.state.selectVal === '2' &&
           listData.map((item, index) => (

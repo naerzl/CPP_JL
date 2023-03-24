@@ -6,6 +6,9 @@ import SwiperIndex from './components/SwiperIndex'
 import TdsIndex from './components/TdsIndex'
 
 const Index = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  })
   return (
     <div className="indexbox" style={{ marginTop: '64px' }}>
       {/*  */}

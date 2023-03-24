@@ -9,6 +9,9 @@ import TDScourse from '@/views/TDScourse/TDScourse'
 import ApplicationCase from '@/views/applicationcase/ApplicationCase'
 import HomeSearch from '@/views/search/HomeSearch'
 import StonesDetail from '@/views/stones/Stones-detail/StonesDetail'
+import EnterpriseDetail from '@/views/enterprise/enterpirse-detail/EnterpriseDetail'
+import MoreProduct from '@/views/enterprise/more-product/MoreProduct'
+import MoreStone from '@/views/enterprise/more-stone/MoreStone'
 const navList = [
   {
     name: '首页',
@@ -44,8 +47,20 @@ const navList = [
     path: 'stones-detail/:id',
   },
   {
+    element: <EnterpriseDetail></EnterpriseDetail>,
+    path: 'enterprise-detail/:id',
+  },
+  {
+    element: <MoreProduct></MoreProduct>,
+    path: 'more-product',
+  },
+  {
+    element: <MoreStone></MoreStone>,
+    path: 'more-stone',
+  },
+  {
     name: 'no fond',
-    element: <Navigate to={'/home'}></Navigate>,
+    element: <Navigate to={'/home/index'}></Navigate>,
     path: '*',
   },
 ]

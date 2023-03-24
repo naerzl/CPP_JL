@@ -1,0 +1,14 @@
+.container {
+  margin-bottom: 40px;
+  padding: 40px;
+  background-color: #fff;
+  .tag {
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .stoneList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

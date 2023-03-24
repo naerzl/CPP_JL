@@ -1,6 +1,18 @@
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import classes from './CompanyItem.module.scss'
 const CompanyItem = (props: any) => {
+  const nav = useNavigate()
+  const location = useLocation()
+  const goLookDetail = () => {
+    nav(`/home/enterprise-detail/${props.item.relationId || props.item.id}`, {
+      state: {
+        id: props.item.relationId || props.item.id,
+        from: location.pathname,
+        fromname: props.from,
+      },
+    })
+  }
   return (
     <div className={classes.box}>
       <img src={'https://' + props.item.file} alt="" />
@@ -17,7 +29,9 @@ const CompanyItem = (props: any) => {
           <div className={classes.desc}>{props.item.address}</div>
         </div>
         <p className={classes.text}>{props.item.profile}</p>
-        <button className={classes.button}>查看详情</button>
+        <button className={classes.button} onClick={goLookDetail}>
+          查看详情
+        </button>
       </div>
     </div>
   )

@@ -144,7 +144,11 @@ const Enterprise = () => {
         {/* 展示列表 */}
         <div className={classes.enterpriseList}>
           {enterpriseList.map((item) => (
-            <CompanyItem item={item} key={item.id}></CompanyItem>
+            <CompanyItem
+              item={item}
+              key={item.id}
+              from="企业社区"
+            ></CompanyItem>
           ))}
         </div>
         {total > 0 && (

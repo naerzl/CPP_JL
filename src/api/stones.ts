@@ -12,3 +12,8 @@ export const reqGetStoneInfo = (id: number) => {
 
 // 获取骨料关联的企业
 export const reqGetStoneBindEnterprises = (data: any) => request.post('/api/Stone/getstonesupplierpagelist', data)
+
+// 获取企业关联的骨料
+export const reqGetEnterprisePageList = (data: any) => {
+    return request.post('/api/Stone/getenterprisebindstonepagelist', data)
+}

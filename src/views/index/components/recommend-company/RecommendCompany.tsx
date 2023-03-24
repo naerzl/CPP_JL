@@ -55,7 +55,7 @@ const RecommendCompany = () => {
       </div>
       <div className={classes.companyList}>
         {companyList.map((item, index) => (
-          <CompanyItem item={item} key={index}></CompanyItem>
+          <CompanyItem item={item} key={index} from="首页"></CompanyItem>
         ))}
       </div>
       <div className={classes.bottomButton} onClick={handleClickReset}>

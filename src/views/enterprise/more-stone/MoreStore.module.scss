@@ -1,0 +1,14 @@
+.main {
+  margin-top: 64px;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    padding: 40px;
+    background-color: #fff;
+    .pagination {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

@@ -39,7 +39,7 @@ const RecommendStone = () => {
       </div>
       <div className={classes.stoneList}>
         {stoneList.map((item, index) => (
-          <StoneIndex key={index} item={item} form="首页"></StoneIndex>
+          <StoneIndex key={index} item={item} from="首页"></StoneIndex>
         ))}
       </div>
       <div className={classes.bottomButton} onClick={handleClickReset}>

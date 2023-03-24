@@ -44,6 +44,7 @@ const StonesDetail = () => {
     return stoneColor.find((el: any) => +el.code === +item)?.codeName
   })
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     getStoneData()
   }, [getStoneData])
 
@@ -59,8 +60,8 @@ const StonesDetail = () => {
             separator=">"
             items={[
               {
-                title: location.state.formname,
-                href: location.state.form,
+                title: location.state.fromname,
+                href: location.state.from,
               },
               {
                 title: stoneData?.stone?.name,

@@ -206,7 +206,7 @@ const Stones = () => {
         </div>
         <div className={classes.stoneList}>
           {stoneList.map((item, index) => (
-            <StonesItem key={item.id} item={item}></StonesItem>
+            <StonesItem key={item.id} item={item} from="骨料社区"></StonesItem>
           ))}
           {total > 0 && (
             <div className={classes.pagination}>
