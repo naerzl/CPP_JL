@@ -1,8 +1,13 @@
-import { Breadcrumb, Divider } from 'antd'
+import { Breadcrumb, Divider, message } from 'antd'
 import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import classes from './StonesDetail.module.scss'
-import { reqGetStoneBindEnterprises, reqGetStoneInfo } from '@/api/stones'
+import {
+  reqGetStoneBindEnterprises,
+  reqGetStoneInfo,
+  reqCollection,
+  reqCancelCollection,
+} from '@/api/stones'
 import { useSelector } from 'react-redux'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper'
@@ -51,7 +56,21 @@ const StonesDetail = () => {
   const vein = stoneVein?.find(
     (item: any) => +item.code === stoneData.stone?.vein
   )?.codeName
-
+  const handleCollect = async (type: boolean) => {
+    if (type) {
+      const res = await reqCollection(id)
+      if (res.data.code === 200) {
+        message.success('操作成功')
+        getStoneData()
+      }
+    } else {
+      const res = await reqCancelCollection(id)
+      if (res.data.code === 200) {
+        message.success('操作成功')
+        getStoneData()
+      }
+    }
+  }
   return (
     <div className={classes.main}>
       <div className="banxin">
@@ -109,9 +128,19 @@ const StonesDetail = () => {
             <div className={classes.handle}>
               <button className={classes.design}>立即设计</button>
               {stoneData.isCollectible ? (
-                <button className={classes.cancel}>取消收藏</button>
+                <button
+                  className={classes.cancel}
+                  onClick={() => handleCollect(false)}
+                >
+                  取消收藏
+                </button>
               ) : (
-                <button className={classes.collect}>收藏骨料</button>
+                <button
+                  className={classes.collect}
+                  onClick={() => handleCollect(true)}
+                >
+                  收藏骨料
+                </button>
               )}
             </div>
           </div>

@@ -4,8 +4,8 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         authorization: JSON.parse(localStorage.getItem('authorization') as string) || {},
-        token: JSON.parse(localStorage.getItem('token') as string) || {},
-        userInfo: {}
+        token: JSON.parse(localStorage.getItem('token') as string) || '',
+        userInfo: JSON.parse(localStorage.getItem('userinfo') as string) || {},
     },
     reducers: {
         setAuthorizaion(state, actions) {
@@ -18,10 +18,18 @@ const userSlice = createSlice({
         },
         setUserInfor(state, actions) {
             state.userInfo = actions.payload
+            localStorage.setItem('userinfo', JSON.stringify(actions.payload))
+        },
+        logout(state, actions) {
+            state.authorization = {}
+            state.token = ''
+            state.userInfo = {}
+            localStorage.removeItem('token')
+            localStorage.removeItem('userinfo')
         }
     }
 })
 
-export const { setAuthorizaion, setToken, setUserInfor } = userSlice.actions
+export const { setAuthorizaion, setToken, setUserInfor, logout } = userSlice.actions
 
 export default userSlice

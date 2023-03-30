@@ -2,6 +2,7 @@ import StoneIndex from '@/components/stone-index/StoneIndex'
 import React from 'react'
 import classes from './RecommendStone.module.scss'
 import { reqGetHomeStoneAdvList } from '@/api'
+import { Link } from 'react-router-dom'
 
 const RecommendStone = () => {
   const [stoneList, setStoneList] = React.useState<any[]>([])
@@ -35,7 +36,9 @@ const RecommendStone = () => {
     <div className={classes.container}>
       <div className={classes.tag}>
         <img src={require('@/assets/index/recommend-stone.png')} alt="" />
-        <img src={require('@/assets/index/more-stone.png')} alt="" />
+        <Link to={'/home/stones'}>
+          <img src={require('@/assets/index/more-stone.png')} alt="" />
+        </Link>
       </div>
       <div className={classes.stoneList}>
         {stoneList.map((item, index) => (

@@ -7,16 +7,18 @@ import CompanyItem from '@/components/company-item/CompanyItem'
 import { Pagination } from 'antd'
 const HomeSearch = () => {
   const location = useLocation()
-  const reqParams = React.useRef({
+  console.log(location.state)
+  const reqParams = {
     pageNumber: 1,
     pageSize: 12,
     keyword: location.state.searchVal,
-  })
+  }
   const [listData, setListData] = React.useState([])
   const [total, setTotal] = React.useState(0)
   const request = React.useCallback(
     (cb: Function) => {
-      cb(reqParams.current).then((res: any) => {
+      console.log('回调函数打印了')
+      cb(reqParams).then((res: any) => {
         if (res.data.code === 200) {
           if (location.state.selectVal === '1') {
             const newArr = res.data.data.items.map((item: any) => {
@@ -43,7 +45,8 @@ const HomeSearch = () => {
         }
       })
     },
-    [location.state.selectVal]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location.state]
   )
   const getListData = React.useCallback(async () => {
     if (location.state.selectVal === '1') {
@@ -53,7 +56,7 @@ const HomeSearch = () => {
     }
   }, [location.state.selectVal, request])
   const onChange = (pageNumber: number) => {
-    reqParams.current.pageNumber = pageNumber
+    reqParams.pageNumber = pageNumber
     getListData()
   }
   React.useEffect(() => {

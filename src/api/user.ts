@@ -22,3 +22,7 @@ export const reqApiCheck = () => {
 
 // 获取数据字典
 export const reqGetDictionariesData = (data: string[]) => request.post('/api/Advertise/getdictionarylistbytypecodes', data)
+
+
+// 获取当前登录的账号信息
+export const reqGetAccountInfo = () => request.get('/api/user/Account/info')

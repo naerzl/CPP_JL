@@ -17,3 +17,17 @@ export const reqGetStoneBindEnterprises = (data: any) => request.post('/api/Ston
 export const reqGetEnterprisePageList = (data: any) => {
     return request.post('/api/Stone/getenterprisebindstonepagelist', data)
 }
+
+/**
+* @description: 收藏骨料
+* @param {type} 
+* @return: 
+*/
+export const reqCollection = (stoneId: any) => request.post(`/api/user/Collectible?stoneId=${stoneId}`,)
+
+
+/**
+ * 取消收藏 API
+ * @returns 取消收藏
+ */
+export const reqCancelCollection = (stoneId: any) => request.put(`/api/user/Collectible?stoneId=${stoneId}`)

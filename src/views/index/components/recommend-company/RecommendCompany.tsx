@@ -2,7 +2,12 @@ import CompanyItem from '@/components/company-item/CompanyItem'
 import React from 'react'
 import classes from './ReacommendCompany.module.scss'
 import { reqGetHomeAdvertisingList, reqGetEnterpriseById } from '@/api'
+import { useSelector } from 'react-redux'
+import { message, Modal } from 'antd'
+import { useNavigate } from 'react-router-dom'
 const RecommendCompany = () => {
+  const user = useSelector((state: any) => state.user)
+  const nav = useNavigate()
   const [reqParams, setReqParams] = React.useState({
     type: 5,
     relationType: null, // 关联类型
@@ -47,11 +52,42 @@ const RecommendCompany = () => {
     }
   }, [getAdvertisingList, handleClickReset, reqParams.pageSize, total])
 
+  const toApply = async () => {
+    if (!user.userInfo.type) {
+      nav('/login')
+    }
+    if (user.userInfo.type === 0) {
+      nav('/settleIn')
+    }
+    if (user.userInfo.type === 1) {
+      Modal.confirm({
+        title: '提示',
+        content: '您已入驻，是否跳转到企业端？',
+        cancelText: '取消',
+        okText: '确定',
+        onOk(...args) {
+          window.open(process.env.REACT_APP_COMPANY_URL)
+        },
+      })
+      // window.open(
+      //   process.env.VUE_APP_COMPANY_URL + `/login?code=${encodeToekn}`
+      // )
+      // location.href = 'http://dev-enter.taiduoshi.com'
+    }
+    if (user.userInfo.type === 98 || user.userInfo.type === 99) {
+      message.warning('登录账号为admin账号')
+    }
+  }
+
   return (
     <div className={classes.container}>
       <div className={classes.tag}>
         <img src={require('@/assets/index/recommend-company.png')} alt="" />
-        <img src={require('@/assets/index/settled.png')} alt="" />
+        <img
+          src={require('@/assets/index/settled.png')}
+          alt=""
+          onClick={toApply}
+        />
       </div>
       <div className={classes.companyList}>
         {companyList.map((item, index) => (

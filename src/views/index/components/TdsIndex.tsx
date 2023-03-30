@@ -10,6 +10,7 @@ const TdsIndex = () => {
         src={require('@/assets/index/goTDSdesign.png')}
         alt=""
         onClick={handleClick}
+        style={{ cursor: 'pointer' }}
       />
     </div>
   )

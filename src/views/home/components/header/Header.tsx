@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import classes from './Header.module.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Select, Input, Button } from 'antd'
+import { useSelector } from 'react-redux'
+import UserInfo from './userinfo/UserInfo'
 const { Search } = Input
 const { Option } = Select
 const navList = [
@@ -36,6 +38,7 @@ const navList = [
 const Header = () => {
   const loaction = useLocation()
   const navigate = useNavigate()
+  const { token, userInfo } = useSelector((state: any) => state.user)
   navList.forEach((item) => (item.isActive = false))
   const obj = navList.find((item) => item.path === loaction.pathname)
   if (obj) {
@@ -56,6 +59,11 @@ const Header = () => {
       state: { selectVal: selectVal.current, searchVal: value },
       replace: loaction.pathname === '/home/search',
     })
+  }
+  const goLogin = () => {
+    if (token) return
+
+    navigate('/login')
   }
   return (
     <header className={classes.container}>
@@ -84,21 +92,6 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        {/* <Select
-          defaultValue="骨料"
-          className={classes.headerSelet}
-          style={{ width: '78px', marginLeft: '15px' }}
-          onChange={handleChangeSelect}
-          options={[
-            { value: '2', label: '骨料' },
-            { value: '1', label: '企业' },
-          ]}
-        />
-        <Search
-          placeholder="input search text"
-          onSearch={onSearch}
-          style={{ width: 280, borderRadius: 0 }}
-        /> */}
         <Search
           addonBefore={selectBefore}
           onSearch={onSearch}
@@ -109,16 +102,30 @@ const Header = () => {
             display: 'flex',
           }}
         />
-        <Button
-          className={classes.headerButton}
-          style={{ margin: '0 10px 0 70px' }}
-        >
-          企业端
-        </Button>
-        <Button className={classes.headerButton}>立即设计</Button>
-        <div className={classes.avatar}>
-          <img src={require('@/assets/home/avatar.png')} alt="" />
-          <div>{'请登录'}</div>
+        <div className={classes.right}>
+          {(!token || (userInfo.type !== 98 && userInfo.type !== 99)) && (
+            <Button
+              className={classes.headerButton}
+              style={{ margin: '0 10px 0 70px' }}
+            >
+              企业端
+            </Button>
+          )}
+          <Button className={classes.headerButton}>立即设计</Button>
+          <div className={classes.avatar} onClick={goLogin}>
+            <img
+              src={
+                token
+                  ? require('@/assets/home/avatar2.png')
+                  : require('@/assets/home/avatar.png')
+              }
+              alt=""
+            />
+            <div style={{ lineHeight: '36px', height: '36px' }}>
+              {token ? userInfo.accountName : '请登录'}
+            </div>
+          </div>
+          <UserInfo></UserInfo>
         </div>
       </div>
     </header>

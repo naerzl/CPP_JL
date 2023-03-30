@@ -112,6 +112,7 @@ const Stones = () => {
     setReqParams((pre) => ({ ...pre, pageNumber }))
   }
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     getStoneList()
   }, [getStoneList])
   return (

@@ -1,10 +1,10 @@
 import React, { ChangeEvent } from 'react'
 import classes from './LoginForm.module.scss'
 import { Form, Input, Button } from 'antd'
-import { reqLogin } from '@/api/user'
+import { reqLogin, reqGetAccountInfo } from '@/api/user'
 import { useSelector, useDispatch } from 'react-redux'
 import { getOAuthToken } from '@/utils/AES'
-import { setToken } from '@/store/modules/login'
+import { setToken, setUserInfor } from '@/store/modules/login'
 import { useNavigate } from 'react-router-dom'
 const formItemLayout = {
   labelCol: {
@@ -37,6 +37,12 @@ const LoginForm = () => {
     const res = await reqLogin(loginForm)
     if (res.data.code === 200) {
       dispatch(setToken(res.data.data.token))
+      reqGetAccountInfo().then((e) => {
+        if (e.data.code === 200) {
+          console.log(e)
+          dispatch(setUserInfor(e.data.data))
+        }
+      })
       navigate('/home')
     }
   }

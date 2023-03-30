@@ -94,6 +94,7 @@ const Enterprise = () => {
     setReqParams((pre) => ({ ...pre, pageNumber }))
   }
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     getEnterpriseData()
   }, [getEnterpriseData])
   return (
