@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Select, Input, Button } from 'antd'
 import { useSelector } from 'react-redux'
 import UserInfo from './userinfo/UserInfo'
+import { useClickAway } from 'ahooks'
 const { Search } = Input
 const { Option } = Select
 const navList = [
@@ -60,48 +61,58 @@ const Header = () => {
       replace: loaction.pathname === '/home/search',
     })
   }
+  const [isShow, setIsShow] = React.useState(false)
   const goLogin = () => {
-    if (token) return
-
+    if (token) {
+      setIsShow((pre) => !pre)
+      return
+    }
     navigate('/login')
   }
+  const useINfo_ref = React.useRef(null)
+  const div_ref = React.useRef(null)
+  useClickAway(() => {
+    setIsShow(false)
+  }, [useINfo_ref, div_ref])
   return (
     <header className={classes.container}>
       <div
         className="banxin clearfix"
         style={{
           display: 'flex',
-          justifyContent: 'start',
+          justifyContent: 'space-between',
           alignItems: 'center',
           height: '40px',
         }}
       >
-        <h1 className="logo fl" style={{ marginRight: '37px' }}>
-          <NavLink to="/">
-            <img src={require('@/assets/login/TDS_logo.png')} alt="" />
-          </NavLink>
-        </h1>
-        <ul className={classes.headerNav}>
-          {navList.map((item, index) => (
-            <li
-              key={item.path}
-              className={`fl ${item.isActive && classes.active}`}
-              style={{ margin: '0 15px' }}
-            >
-              <NavLink to={item.path}>{item.name}</NavLink>
-            </li>
-          ))}
-        </ul>
-        <Search
-          addonBefore={selectBefore}
-          onSearch={onSearch}
-          style={{
-            width: '320px',
-            height: '40px',
-            alignItems: 'center',
-            display: 'flex',
-          }}
-        />
+        <div className={classes.left}>
+          <h1 className="logo fl" style={{ marginRight: '37px' }}>
+            <NavLink to="/home/index">
+              <img src={require('@/assets/login/TDS_logo.png')} alt="" />
+            </NavLink>
+          </h1>
+          <ul className={classes.headerNav}>
+            {navList.map((item, index) => (
+              <li
+                key={item.path}
+                className={`fl ${item.isActive && classes.active}`}
+                style={{ margin: '0 15px' }}
+              >
+                <NavLink to={item.path}>{item.name}</NavLink>
+              </li>
+            ))}
+          </ul>
+          <Search
+            addonBefore={selectBefore}
+            onSearch={onSearch}
+            style={{
+              width: '320px',
+              height: '40px',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+          />
+        </div>
         <div className={classes.right}>
           {(!token || (userInfo.type !== 98 && userInfo.type !== 99)) && (
             <Button
@@ -111,8 +122,13 @@ const Header = () => {
               企业端
             </Button>
           )}
-          <Button className={classes.headerButton}>立即设计</Button>
-          <div className={classes.avatar} onClick={goLogin}>
+          <Button
+            className={classes.headerButton}
+            onClick={() => window.open(process.env.REACT_APP_JICAI_URL)}
+          >
+            立即设计
+          </Button>
+          <div ref={div_ref} className={classes.avatar} onClick={goLogin}>
             <img
               src={
                 token
@@ -125,7 +141,7 @@ const Header = () => {
               {token ? userInfo.accountName : '请登录'}
             </div>
           </div>
-          <UserInfo></UserInfo>
+          {isShow && <UserInfo ref={useINfo_ref}></UserInfo>}
         </div>
       </div>
     </header>

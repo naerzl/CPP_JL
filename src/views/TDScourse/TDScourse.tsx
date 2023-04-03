@@ -52,7 +52,12 @@ const TDScourse = () => {
           src={require('@/assets/TDS-course/bg.png')}
           alt=""
         />
-        <div className={classes.design}>立即设计</div>
+        <div
+          className={classes.design}
+          onClick={() => window.open(process.env.REACT_APP_JICAI_URL)}
+        >
+          立即设计
+        </div>
         <img
           className={classes.down}
           src={require('@/assets/TDS-course/down.png')}

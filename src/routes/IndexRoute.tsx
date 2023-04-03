@@ -17,6 +17,7 @@ import PersonalInfo from '@/views/personal/components/personal-info/PersonalInfo
 import MyCollect from '@/views/personal/components/my-collect/MyCollect'
 import LabelCompany from '@/views/personal/components/label-company/LabelCompany'
 import ChangePassword from '@/views/personal/components/change-password/ChangePassword'
+import Demo from '@/views/demo/Demo'
 
 const Index = React.lazy(() => import('@/views/index'))
 const isLazy = (Component: FC) => (
@@ -25,6 +26,10 @@ const isLazy = (Component: FC) => (
   </Suspense>
 )
 const navList = [
+  {
+    element: <Demo></Demo>,
+    path: 'demo',
+  },
   {
     name: '首页',
     element: isLazy(Index),
@@ -70,6 +75,7 @@ const navList = [
     element: <MoreStone></MoreStone>,
     path: 'more-stone',
   },
+
   {
     element: <Personal></Personal>,
     path: 'personal',

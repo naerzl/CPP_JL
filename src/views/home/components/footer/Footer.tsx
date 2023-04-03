@@ -1,7 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import classes from './Footer.module.scss'
 
 const Footer = () => {
+  const nav = useNavigate()
   return (
     <div className={classes.footerContainer}>
       <div
@@ -29,13 +31,15 @@ const Footer = () => {
         <div className={classes.right}>
           <dl>
             <dt>产品</dt>
-            <dd>TDS设计系统</dd>
-            <dd>太多石网站</dd>
+            <dd onClick={() => window.open(process.env.REACT_APP_JICAI_URL)}>
+              TDS设计系统
+            </dd>
+            <dd onClick={() => nav('/home/index')}>太多石网站</dd>
           </dl>
 
           <dl>
             <dt>教程</dt>
-            <dd>查看帮助</dd>
+            <dd onClick={() => nav('/home/TDScourse')}>查看帮助</dd>
           </dl>
           <dl>
             <dt>法律条款</dt>

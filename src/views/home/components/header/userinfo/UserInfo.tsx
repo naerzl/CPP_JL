@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import classes from './UserInfo.module.scss'
-const UserInfo = () => {
+const UserInfo = React.forwardRef((props: any, ref: any) => {
   const nav = useNavigate()
   const dispatch = useDispatch()
   const handleLogout = () => {
@@ -21,10 +21,11 @@ const UserInfo = () => {
   }
   return (
     <>
-      <div className={classes.suspansion}>
+      <div className={classes.suspansion} ref={ref}>
         <div className={classes.title}>个人管理</div>
         <div className={`${classes.image} clearfix`}>
           <img
+            onClick={() => nav('/home/personal')}
             src={require('@/assets/home/account_info.png')}
             alt=""
             className="fl"
@@ -71,6 +72,6 @@ const UserInfo = () => {
       </div>
     </>
   )
-}
+})
 
 export default UserInfo
