@@ -1,9 +1,12 @@
 import { logout } from '@/store/modules/login'
-import { Modal } from 'antd'
+import { Button, message, Modal } from 'antd'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import classes from './UserInfo.module.scss'
+import dayjs from 'dayjs'
+import { reqGetPersonalMessagePageList, reqPutReadAllMessage } from '@/api/user'
+import ZheDie from './zhedie/ZheDie'
 const UserInfo = React.forwardRef((props: any, ref: any) => {
   const nav = useNavigate()
   const dispatch = useDispatch()
@@ -18,6 +21,31 @@ const UserInfo = React.forwardRef((props: any, ref: any) => {
         nav('/login')
       },
     })
+  }
+  const [messageData, setMessageData] = React.useState<any[]>([])
+  const getData = React.useCallback(() => {
+    reqGetPersonalMessagePageList({
+      pageNumber: 1,
+      pageSize: 2147483647,
+      isRead: null, // 是否已读【1：已读；0：未读；null：查询所有】
+    }).then((res) => {
+      if (res.data.code === 200) {
+        setMessageData(res.data.data.data)
+      }
+    })
+  }, [])
+
+  React.useEffect(() => {
+    getData()
+  }, [getData])
+
+  const handleAllIsReady = async () => {
+    const res = await reqPutReadAllMessage()
+    if (res.data.code === 200) {
+      message.success('操作成功')
+      getData()
+      props.onGetTatol()
+    }
   }
   return (
     <>
@@ -56,19 +84,31 @@ const UserInfo = React.forwardRef((props: any, ref: any) => {
         <div className={`${classes.message} clearfix`}>
           <div className={`${classes.left} fl`}>系统消息</div>
           <div className={`${classes.center} fl`}></div>
-          <div className={`${classes.right} fr`}></div>
+          <div className={`${classes.right} fr`}>
+            <Button type="default" onClick={handleAllIsReady}>
+              全部已读
+            </Button>
+          </div>
         </div>
-        <ul className={classes.task}>
-          <li>
-            <div className={classes.time}>
-              <i className={classes.yellow}></i>
-              <i></i>
-              <span></span>
-            </div>
-            <div className={classes.content}></div>
-          </li>
-        </ul>
-        <div className={classes.no_message}>暂无其他消息~</div>
+        {messageData.length > 0 ? (
+          <ul className={classes.task}>
+            {messageData.map((item: any) => (
+              <li key={item.id}>
+                <div className={classes.time}>
+                  {item.isRead ? <i></i> : <i className={classes.yellow}></i>}
+                  <span>
+                    {dayjs(item.addDate).format('YYYY-MM-DD HH:mm:ss')}
+                  </span>
+                </div>
+                <div className={classes.content}>
+                  <ZheDie content={item.msgContent}></ZheDie>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className={classes.no_message}>暂无其他消息~</div>
+        )}
       </div>
     </>
   )

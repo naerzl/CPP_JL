@@ -15,6 +15,7 @@ export default function useCountDown(initCount = 10, callBack = () => { }) {
     useEffect(() => {
         // 清除副作用
         return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             clearInterval(timeId.current.id)
         }
     }, [])
@@ -29,6 +30,7 @@ export default function useCountDown(initCount = 10, callBack = () => { }) {
                 callBack()
             }
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [count, callBack]   // 监听 count
     )
 

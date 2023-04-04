@@ -26,3 +26,18 @@ export const reqGetDictionariesData = (data: string[]) => request.post('/api/Adv
 
 // 获取当前登录的账号信息
 export const reqGetAccountInfo = () => request.get('/api/user/Account/info')
+
+// 分页获取消息
+export function reqGetPersonalMessagePageList(data: any) {
+    return request.post('/api/user/Account/getpersonalmessagepagelist', data)
+}
+
+// 提交读取全部未读消息
+export const reqPutReadAllMessage = () => {
+    return request.post('/api/user/Account/putreadallmessage')
+}
+
+// 获取未读数据
+export const reqGetPersonalNotreadcount = () => {
+    return request.post('/api/user/Account/getpersonalnotreadcount')
+}

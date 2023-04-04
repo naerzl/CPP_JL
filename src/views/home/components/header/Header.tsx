@@ -2,10 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './Header.module.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Select, Input, Button } from 'antd'
+import { Select, Input, Button, Badge } from 'antd'
 import { useSelector } from 'react-redux'
 import UserInfo from './userinfo/UserInfo'
 import { useClickAway } from 'ahooks'
+import { reqGetPersonalNotreadcount } from '@/api/user'
 const { Search } = Input
 const { Option } = Select
 const navList = [
@@ -74,6 +75,19 @@ const Header = () => {
   useClickAway(() => {
     setIsShow(false)
   }, [useINfo_ref, div_ref])
+
+  const [total, setTotal] = React.useState(0)
+  const getData = React.useCallback(() => {
+    reqGetPersonalNotreadcount().then((res) => {
+      if (res.data.code === 200) {
+        setTotal(Number(res.data.data))
+      }
+    })
+  }, [])
+
+  React.useEffect(() => {
+    getData()
+  }, [getData])
   return (
     <header className={classes.container}>
       <div
@@ -128,20 +142,31 @@ const Header = () => {
           >
             立即设计
           </Button>
+
           <div ref={div_ref} className={classes.avatar} onClick={goLogin}>
-            <img
-              src={
-                token
-                  ? require('@/assets/home/avatar2.png')
-                  : require('@/assets/home/avatar.png')
-              }
-              alt=""
-            />
-            <div style={{ lineHeight: '36px', height: '36px' }}>
+            <Badge
+              count={total}
+              overflowCount={99}
+              style={{ top: '5px', right: '7px', insetInlineEnd: 'none' }}
+            >
+              <img
+                src={
+                  token
+                    ? require('@/assets/home/avatar2.png')
+                    : require('@/assets/home/avatar.png')
+                }
+                alt=""
+              />
+            </Badge>
+            <div
+              style={{ lineHeight: '36px', height: '36px', marginLeft: '10px' }}
+            >
               {token ? userInfo.accountName : '请登录'}
             </div>
           </div>
-          {isShow && <UserInfo ref={useINfo_ref}></UserInfo>}
+          {isShow && (
+            <UserInfo ref={useINfo_ref} onGetTatol={getData}></UserInfo>
+          )}
         </div>
       </div>
     </header>

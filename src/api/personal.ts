@@ -11,3 +11,6 @@ export const reqPutUserInfo = (data: any) => request.put('/api/user/Account', da
 
 // 注销账号
 export const reqPutCancellAccount = () => request.post('/api/user/Account/putcancelledaccount')
+
+// 修改密码
+export const reqPutChangPassword = (data: any) => request.post('/api/user/Account/putchangepwd', data)

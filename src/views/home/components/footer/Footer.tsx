@@ -43,10 +43,16 @@ const Footer = () => {
           </dl>
           <dl>
             <dt>法律条款</dt>
-            <dd>用户服务协议</dd>
-            <dd>企业使用协议</dd>
-            <dd>平台会员协议</dd>
-            <dd>用户隐私协议</dd>
+            <dd onClick={() => nav('/home/argeement')}>用户服务协议</dd>
+            <dd onClick={() => nav('/home/argeement/company-argeement')}>
+              企业使用协议
+            </dd>
+            <dd onClick={() => nav('/home/argeement/vip-argeement')}>
+              平台会员协议
+            </dd>
+            <dd onClick={() => nav('/home/argeement/privacy-argeement')}>
+              用户隐私协议
+            </dd>
           </dl>
           <dl>
             <dt>平台合作</dt>

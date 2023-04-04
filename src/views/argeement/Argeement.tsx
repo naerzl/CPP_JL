@@ -1,34 +1,31 @@
-import { Breadcrumb } from 'antd'
 import React from 'react'
+import classes from './Argeement.module.scss'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import classes from './Personal.module.scss'
-const Personal = () => {
+import { Breadcrumb } from 'antd'
+const Argeement = () => {
   const location = useLocation()
   const navList = React.useRef([
     {
-      name: '个人信息维护',
+      name: '用户服务协议',
       isActive: false,
-      path: '/home/personal',
+      path: '/home/argeement',
     },
     {
-      name: '修改密码',
+      name: '企业使用协议',
       isActive: false,
-      path: '/home/personal/change-password',
+      path: '/home/argeement/company-argeement',
     },
     {
-      name: '我的收藏',
+      name: '平台会员协议',
       isActive: false,
-      path: '/home/personal/my-collect',
+      path: '/home/argeement/vip-argeement',
     },
     {
-      name: '关联企业',
+      name: '用户隐私协议',
       isActive: false,
-      path: '/home/personal/label-company',
+      path: '/home/argeement/privacy-argeement',
     },
   ])
-  React.useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
   return (
     <div className={classes.main}>
       <div className="banxin">
@@ -70,4 +67,4 @@ const Personal = () => {
   )
 }
 
-export default Personal
+export default Argeement

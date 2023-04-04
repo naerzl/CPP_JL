@@ -18,6 +18,12 @@ import MyCollect from '@/views/personal/components/my-collect/MyCollect'
 import LabelCompany from '@/views/personal/components/label-company/LabelCompany'
 import ChangePassword from '@/views/personal/components/change-password/ChangePassword'
 import Demo from '@/views/demo/Demo'
+import ServeArgeement from '@/views/argeement/components/serve-argeement/ServeArgeement'
+import CompanyArgeement from '@/views/argeement/components/company-argeement/CompanyArgeement'
+import VipArgeement from '@/views/argeement/components/vip-argeement/VipArgeement'
+import PrivacyArgeement from '@/views/argeement/components/privacy-argeement/PrivacyArgeement'
+import Argeement from '@/views/argeement/Argeement'
+import SettleIn from '@/views/enterprise/settlein/SettleIn'
 
 const Index = React.lazy(() => import('@/views/index'))
 const isLazy = (Component: FC) => (
@@ -75,7 +81,10 @@ const navList = [
     element: <MoreStone></MoreStone>,
     path: 'more-stone',
   },
-
+  {
+    element: <SettleIn></SettleIn>,
+    path: 'settle-in',
+  },
   {
     element: <Personal></Personal>,
     path: 'personal',
@@ -95,6 +104,28 @@ const navList = [
       {
         element: <ChangePassword></ChangePassword>,
         path: 'change-password',
+      },
+    ],
+  },
+  {
+    element: <Argeement></Argeement>,
+    path: 'argeement',
+    children: [
+      {
+        element: <ServeArgeement></ServeArgeement>,
+        path: '',
+      },
+      {
+        element: <CompanyArgeement></CompanyArgeement>,
+        path: 'company-argeement',
+      },
+      {
+        element: <VipArgeement></VipArgeement>,
+        path: 'vip-argeement',
+      },
+      {
+        element: <PrivacyArgeement></PrivacyArgeement>,
+        path: 'privacy-argeement',
       },
     ],
   },
