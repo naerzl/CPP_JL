@@ -78,12 +78,13 @@ const Header = () => {
 
   const [total, setTotal] = React.useState(0)
   const getData = React.useCallback(() => {
+    if (!token) return setTotal(0)
     reqGetPersonalNotreadcount().then((res) => {
       if (res.data.code === 200) {
         setTotal(Number(res.data.data))
       }
     })
-  }, [])
+  }, [token])
 
   React.useEffect(() => {
     getData()

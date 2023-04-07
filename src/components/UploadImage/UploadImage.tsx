@@ -2,21 +2,15 @@ import React from 'react'
 import { Upload } from 'antd'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
 import { useSelector } from 'react-redux'
+
 const UploadImage = (props: any) => {
-  const { limt = 1 } = props
+  const { limt = 3, change, type, style = {} } = props
   const { authorization, token } = useSelector((state: any) => state.user)
-  console.log(authorization)
-  const [fileList, setFileList] = React.useState<UploadFile[]>([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-  ])
+  const [fileList, setFileList] = React.useState<UploadFile[]>([])
 
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList)
+    change(type, newFileList)
   }
 
   const onPreview = async (file: UploadFile) => {
@@ -45,8 +39,9 @@ const UploadImage = (props: any) => {
         Token: token,
       }}
       onPreview={onPreview}
+      style={style}
     >
-      {fileList.length < limt && '+ Upload'}
+      {limt > fileList.length && props.children}
     </Upload>
   )
 }

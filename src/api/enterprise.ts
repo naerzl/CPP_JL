@@ -15,3 +15,8 @@ export const reqGetEnterpriseProductList = (params: object) => {
     console.log(params)
     return request.get('/api/Enterprise/getenterpriseproductlist', { params });
 };
+
+// 新版申请入驻 
+export const reqPutApplyFor = (data: any) => {
+    return request.post('/api/user/Enterprise/putapplyfor', data)
+}

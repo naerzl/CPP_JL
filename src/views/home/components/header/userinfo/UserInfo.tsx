@@ -18,7 +18,8 @@ const UserInfo = React.forwardRef((props: any, ref: any) => {
       cancelText: '取消',
       onOk() {
         dispatch(logout(''))
-        nav('/login')
+        getData()
+        // nav('/login')
       },
     })
   }

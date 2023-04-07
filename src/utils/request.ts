@@ -24,9 +24,12 @@ request.interceptors.request.use(function (config) {
 request.interceptors.response.use(function (response) {
     if (response.data.code === 600) {
         message.destroy()
-        message.warning(response.data.message)
-        store.dispatch(logout(''))
-        window.location.href = '/login'
+        message.warning(response.data.message).then((res) => {
+            if (res) {
+                store.dispatch(logout(''))
+                window.location.href = '/login'
+            }
+        })
     }
     return response;
 }, async function (error) {
