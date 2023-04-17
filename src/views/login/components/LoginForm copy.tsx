@@ -1,12 +1,11 @@
-import React, { ChangeEvent, useCallback } from 'react'
+import React, { ChangeEvent } from 'react'
+import classes from './LoginForm.module.scss'
 import { Form, Input, Button, message } from 'antd'
 import { reqLogin, reqGetAccountInfo } from '@/api/user'
 import { useSelector, useDispatch } from 'react-redux'
 import { getOAuthToken } from '@/utils/AES'
 import { setToken, setUserInfor } from '@/store/modules/login'
 import { useNavigate } from 'react-router-dom'
-import classes from './LoginForm.module.scss'
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -27,40 +26,28 @@ const LoginForm = () => {
     password: '',
     loginTypeEnum: 1,
   })
-  const handlePasswordChage = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setLoginForm((pre) => ({ ...pre, password: e.target.value }))
-    },
-    []
-  )
-  const handleAccountChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setLoginForm((pre) => ({ ...pre, accountName: e.target.value }))
-    },
-    []
-  )
-  const handleSubmit = useCallback(async () => {
-    if (!user.authorization.access_token) {
-      await getOAuthToken()
-    }
-    try {
-      const { data } = await reqLogin(loginForm)
-      if (data.code === 200) {
-        dispatch(setToken(data.data.token))
-        const { data: accountData } = await reqGetAccountInfo()
-        if (accountData.code === 200) {
-          dispatch(setUserInfor(accountData.data))
+  const handlePasswordChage = (e: ChangeEvent<HTMLInputElement>) => {
+    setLoginForm((pre) => ({ ...pre, password: e.target.value }))
+  }
+  const handleAccountChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setLoginForm((pre) => ({ ...pre, accountName: e.target.value }))
+  }
+  const handleSubmit = async () => {
+    !user.authorization.access_token && (await getOAuthToken())
+    const res = await reqLogin(loginForm)
+    if (res.data.code === 200) {
+      dispatch(setToken(res.data.data.token))
+      reqGetAccountInfo().then((e) => {
+        if (e.data.code === 200) {
+          console.log(e)
+          dispatch(setUserInfor(e.data.data))
         }
-        navigate('/home')
-      } else {
-        message.error('登录失败')
-      }
-    } catch (error) {
-      console.log(error)
+      })
+      navigate('/home')
+    } else {
+      message.error('登录失败')
     }
-  }, [dispatch, loginForm, navigate, user.authorization.access_token])
-  const { accountName, password } = loginForm
-  const buttonClass = `${classes.login_form_button} ${classes.login_form_button_primary}`
+  }
   return (
     <div className={classes.login_form}>
       <div className={classes.logo}>
@@ -80,7 +67,7 @@ const LoginForm = () => {
           <Input
             placeholder="请输入用户名"
             style={{ height: '64px' }}
-            value={accountName}
+            value={loginForm.accountName}
             onChange={handleAccountChange}
           />
         </Form.Item>
@@ -93,11 +80,15 @@ const LoginForm = () => {
             placeholder="密码"
             style={{ height: '64px' }}
             onChange={handlePasswordChage}
-            value={password}
+            value={loginForm.password}
           />
         </Form.Item>
         <Form.Item style={{ margin: '30px auto' }}>
-          <Button type="primary" htmlType="submit" className={buttonClass}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className={classes.login_form_button}
+          >
             登录
           </Button>
         </Form.Item>

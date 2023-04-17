@@ -41,8 +41,8 @@ const ApplicationCase = () => {
           <img src={require('@/assets/index/recommend-case.png')} alt="" />
         </div>
         <div className={classes.caseList}>
-          {caseList.map((item) => (
-            <CaseItem key={item.id} item={item}></CaseItem>
+          {caseList.map((item, index) => (
+            <CaseItem key={index} item={item}></CaseItem>
           ))}
         </div>
         {total > 0 && (

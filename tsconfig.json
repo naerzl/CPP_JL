@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noImplicitAny": false, // 是否在表达式和声明上有隐含的any类型时报错
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {

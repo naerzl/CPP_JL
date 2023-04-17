@@ -7,8 +7,11 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 
 // import required modules
-import { EffectCoverflow, Pagination } from 'swiper'
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper'
 const SwiperIndex = () => {
+  const handleSwiperClick = (e) => {
+    console.log(e)
+  }
   return (
     <div className="index">
       <Swiper
@@ -26,8 +29,9 @@ const SwiperIndex = () => {
         loop
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper"
+        onClick={() => handleSwiperClick(123)}
       >
         <SwiperSlide>
           <img
