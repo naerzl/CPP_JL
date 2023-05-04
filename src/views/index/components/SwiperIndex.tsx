@@ -35,49 +35,37 @@ const SwiperIndex = () => {
       >
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            src={require(`@/assets/index/banner1.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-3.jpg"
+            src={require(`@/assets/index/banner2.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-4.jpg"
+            src={require(`@/assets/index/banner3.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-5.jpg"
+            src={require(`@/assets/index/banner4.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-6.jpg"
+            src={require(`@/assets/index/banner5.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://swiperjs.com/demos/images/nature-7.jpg"
-            alt="es-lint want to get"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://swiperjs.com/demos/images/nature-8.jpg"
-            alt="es-lint want to get"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://swiperjs.com/demos/images/nature-9.jpg"
+            src={require(`@/assets/index/banner6.png`)}
             alt="es-lint want to get"
           />
         </SwiperSlide>
