@@ -1,3 +1,4 @@
+import LazyLoadImg from '@/components/lazy-load-img/LazyLoadImg'
 import React from 'react'
 
 const TdsIndex = () => {
@@ -6,7 +7,7 @@ const TdsIndex = () => {
   }
   return (
     <div>
-      <img
+      <LazyLoadImg
         src={require('@/assets/index/goTDSdesign.png')}
         alt=""
         onClick={handleClick}

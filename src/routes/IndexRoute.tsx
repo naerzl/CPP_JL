@@ -3,29 +3,79 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from '../views/login/Login'
 import Home from '../views/home/Home'
 // import Index from '@/views/index'
-import Stones from '@/views/stones/Stones'
-import Enterprise from '@/views/enterprise/Enterprise'
-import TDScourse from '@/views/TDScourse/TDScourse'
-import ApplicationCase from '@/views/applicationcase/ApplicationCase'
-import HomeSearch from '@/views/search/HomeSearch'
-import StonesDetail from '@/views/stones/Stones-detail/StonesDetail'
-import EnterpriseDetail from '@/views/enterprise/enterpirse-detail/EnterpriseDetail'
-import MoreProduct from '@/views/enterprise/more-product/MoreProduct'
-import MoreStone from '@/views/enterprise/more-stone/MoreStone'
-import Personal from '@/views/personal/Personal'
-import PersonalInfo from '@/views/personal/components/personal-info/PersonalInfo'
-import MyCollect from '@/views/personal/components/my-collect/MyCollect'
-import LabelCompany from '@/views/personal/components/label-company/LabelCompany'
-import ChangePassword from '@/views/personal/components/change-password/ChangePassword'
+// import Stones from '@/views/stones/Stones'
+// import Enterprise from '@/views/enterprise/Enterprise'
+// import TDScourse from '@/views/TDScourse/TDScourse'
+// import ApplicationCase from '@/views/applicationcase/ApplicationCase'
+// import HomeSearch from '@/views/search/HomeSearch'
+// import StonesDetail from '@/views/stones/Stones-detail/StonesDetail'
+// import EnterpriseDetail from '@/views/enterprise/enterpirse-detail/EnterpriseDetail'
+// import MoreProduct from '@/views/enterprise/more-product/MoreProduct'
+// import MoreStone from '@/views/enterprise/more-stone/MoreStone'
+// import Personal from '@/views/personal/Personal'
+// import PersonalInfo from '@/views/personal/components/personal-info/PersonalInfo'
+// import MyCollect from '@/views/personal/components/my-collect/MyCollect'
+// import LabelCompany from '@/views/personal/components/label-company/LabelCompany'
+// import ChangePassword from '@/views/personal/components/change-password/ChangePassword'
 import Demo from '@/views/demo/Demo'
-import ServeArgeement from '@/views/argeement/components/serve-argeement/ServeArgeement'
-import CompanyArgeement from '@/views/argeement/components/company-argeement/CompanyArgeement'
-import VipArgeement from '@/views/argeement/components/vip-argeement/VipArgeement'
-import PrivacyArgeement from '@/views/argeement/components/privacy-argeement/PrivacyArgeement'
-import Argeement from '@/views/argeement/Argeement'
-import SettleIn from '@/views/enterprise/settlein/SettleIn'
+// import ServeArgeement from '@/views/argeement/components/serve-argeement/ServeArgeement'
+// import CompanyArgeement from '@/views/argeement/components/company-argeement/CompanyArgeement'
+// import VipArgeement from '@/views/argeement/components/vip-argeement/VipArgeement'
+// import PrivacyArgeement from '@/views/argeement/components/privacy-argeement/PrivacyArgeement'
+// import Argeement from '@/views/argeement/Argeement'
+// import SettleIn from '@/views/enterprise/settlein/SettleIn'
 
 const Index = React.lazy(() => import('@/views/index'))
+const Stones = React.lazy(() => import('@/views/stones/Stones'))
+const Enterprise = React.lazy(() => import('@/views/enterprise/Enterprise'))
+const TDScourse = React.lazy(() => import('@/views/TDScourse/TDScourse'))
+const ApplicationCase = React.lazy(
+  () => import('@/views/applicationcase/ApplicationCase')
+)
+const HomeSearch = React.lazy(() => import('@/views/search/HomeSearch'))
+const StonesDetail = React.lazy(
+  () => import('@/views/stones/Stones-detail/StonesDetail')
+)
+const EnterpriseDetail = React.lazy(
+  () => import('@/views/enterprise/enterpirse-detail/EnterpriseDetail')
+)
+const MoreProduct = React.lazy(
+  () => import('@/views/enterprise/more-product/MoreProduct')
+)
+const MoreStone = React.lazy(
+  () => import('@/views/enterprise/more-stone/MoreStone')
+)
+const Personal = React.lazy(() => import('@/views/personal/Personal'))
+const PersonalInfo = React.lazy(
+  () => import('@/views/personal/components/personal-info/PersonalInfo')
+)
+const MyCollect = React.lazy(
+  () => import('@/views/personal/components/my-collect/MyCollect')
+)
+const LabelCompany = React.lazy(
+  () => import('@/views/personal/components/label-company/LabelCompany')
+)
+const ChangePassword = React.lazy(
+  () => import('@/views/personal/components/change-password/ChangePassword')
+)
+const ServeArgeement = React.lazy(
+  () => import('@/views/argeement/components/serve-argeement/ServeArgeement')
+)
+const CompanyArgeement = React.lazy(
+  () =>
+    import('@/views/argeement/components/company-argeement/CompanyArgeement')
+)
+const VipArgeement = React.lazy(
+  () => import('@/views/argeement/components/vip-argeement/VipArgeement')
+)
+const PrivacyArgeement = React.lazy(
+  () =>
+    import('@/views/argeement/components/privacy-argeement/PrivacyArgeement')
+)
+const Argeement = React.lazy(() => import('@/views/argeement/Argeement'))
+const SettleIn = React.lazy(
+  () => import('@/views/enterprise/settlein/SettleIn')
+)
 const isLazy = (Component: FC) => (
   <Suspense fallback={<div>加载中。。。</div>}>
     {<Component></Component>}
@@ -43,96 +93,91 @@ const navList = [
   },
   {
     name: '骨料社区',
-    element: <Stones></Stones>,
+    element: isLazy(Stones),
     path: 'stones',
   },
   {
     name: '企业社区',
-    element: <Enterprise></Enterprise>,
+    element: isLazy(Enterprise),
     path: 'enterprise',
   },
   {
     name: 'TDS设计教程',
-    element: <TDScourse></TDScourse>,
+    element: isLazy(TDScourse),
     path: 'TDScourse',
   },
   {
     name: '应用案例',
-    element: <ApplicationCase></ApplicationCase>,
+    element: isLazy(ApplicationCase),
     path: 'applicationcase',
   },
   {
-    element: <HomeSearch></HomeSearch>,
+    element: isLazy(HomeSearch),
     path: 'search',
   },
   {
-    element: <StonesDetail></StonesDetail>,
+    element: isLazy(StonesDetail),
     path: 'stones-detail/:id',
   },
   {
-    element: <EnterpriseDetail></EnterpriseDetail>,
+    element: isLazy(EnterpriseDetail),
     path: 'enterprise-detail/:id',
   },
   {
-    element: <MoreProduct></MoreProduct>,
+    element: isLazy(MoreProduct),
     path: 'more-product',
   },
   {
-    element: <MoreStone></MoreStone>,
+    element: isLazy(MoreStone),
     path: 'more-stone',
   },
   {
-    element: <SettleIn></SettleIn>,
+    element: isLazy(SettleIn),
     path: 'settle-in',
   },
   {
-    element: <Personal></Personal>,
+    element: isLazy(Personal),
     path: 'personal',
     children: [
       {
-        element: <PersonalInfo></PersonalInfo>,
+        element: isLazy(PersonalInfo),
         path: '',
       },
       {
-        element: <MyCollect></MyCollect>,
+        element: isLazy(MyCollect),
         path: 'my-collect',
       },
       {
-        element: <LabelCompany></LabelCompany>,
+        element: isLazy(LabelCompany),
         path: 'label-company',
       },
       {
-        element: <ChangePassword></ChangePassword>,
+        element: isLazy(ChangePassword),
         path: 'change-password',
       },
     ],
   },
   {
-    element: <Argeement></Argeement>,
+    element: isLazy(Argeement),
     path: 'argeement',
     children: [
       {
-        element: <ServeArgeement></ServeArgeement>,
+        element: isLazy(ServeArgeement),
         path: '',
       },
       {
-        element: <CompanyArgeement></CompanyArgeement>,
+        element: isLazy(CompanyArgeement),
         path: 'company-argeement',
       },
       {
-        element: <VipArgeement></VipArgeement>,
+        element: isLazy(VipArgeement),
         path: 'vip-argeement',
       },
       {
-        element: <PrivacyArgeement></PrivacyArgeement>,
+        element: isLazy(PrivacyArgeement),
         path: 'privacy-argeement',
       },
     ],
-  },
-  {
-    name: 'no fond',
-    element: <Navigate to={'/home/index'}></Navigate>,
-    path: '*',
   },
 ]
 const IndexRoute = () => (
@@ -149,6 +194,7 @@ const IndexRoute = () => (
       ))}
     </Route>
     <Route path="/login" element={<Login></Login>}></Route>
+    <Route path="*" element={<Navigate to={'/home/index'}></Navigate>}></Route>
   </Routes>
 )
 

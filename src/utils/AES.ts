@@ -35,11 +35,11 @@ export function encrypt(data: string) {
 
 let timer = -1
 export const getOAuthToken = async () => {
-  console.log(456)
   timer !== -1 && clearTimeout(timer)
   const r = await reqApiCheck()
   store.dispatch(setAuthorizaion(r.data.data))
-  const time = new Date(r.data.data.expiresTime).getTime() - Date.now() - 15 * 60 * 1000
+  const time =
+    new Date(r.data.data.expiresTime).getTime() - Date.now() - 15 * 60 * 1000
   timer = window.setTimeout(() => {
     getOAuthToken()
   }, time)

@@ -8,97 +8,12 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3995401_8565lg408u.css">
-  <title>太多石网站-react</title>
-  <style>
-    #root {
-      overflow: overlay;
-      height: 100%;
-    }
-
-    #loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100vh;
-    }
-
-    .loader {
-      --dim: 3rem;
-      width: var(--dim);
-      height: var(--dim);
-      position: relative;
-      animation: spin988 2s linear infinite;
-    }
-
-    .loader .circle {
-      --color: #333;
-      --dim: 1.2rem;
-      width: var(--dim);
-      height: var(--dim);
-      background-color: var(--color);
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .loader .circle:nth-child(1) {
-      top: 0;
-      left: 0;
-    }
-
-    .loader .circle:nth-child(2) {
-      top: 0;
-      right: 0;
-    }
-
-    .loader .circle:nth-child(3) {
-      bottom: 0;
-      left: 0;
-    }
-
-    .loader .circle:nth-child(4) {
-      bottom: 0;
-      right: 0;
-    }
-
-    @keyframes spin988 {
-      0% {
-        transform: scale(1) rotate(0);
-      }
-
-      20%,
-      25% {
-        transform: scale(1.3) rotate(90deg);
-      }
-
-      45%,
-      50% {
-        transform: scale(1) rotate(180deg);
-      }
-
-      70%,
-      75% {
-        transform: scale(1.3) rotate(270deg);
-      }
-
-      95%,
-      100% {
-        transform: scale(1) rotate(360deg);
-      }
-    }
-  </style>
+  <title>网站</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="loader">
-    <div class="loader">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-  </div>
+
 
   <div id="root"></div>
   <!--
@@ -111,13 +26,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.  
     -->
-  <script>
-    let loader = document.getElementById("loader");
-    // 加载完成事件
-    window.onload = function () {
-      // 加载完成，隐藏动画，显示内容
-      loader.style.display = 'none'
-    }
+
   </script>
 </body>
 

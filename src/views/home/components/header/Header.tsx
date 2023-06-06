@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './Header.module.scss'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Select, Input, Button, Badge } from 'antd'
+import { Select, Input, Badge } from 'antd'
 import { useSelector } from 'react-redux'
 import UserInfo from './userinfo/UserInfo'
 import { useClickAway } from 'ahooks'
@@ -129,21 +129,6 @@ const Header = () => {
           />
         </div>
         <div className={classes.right}>
-          {(!token || (userInfo.type !== 98 && userInfo.type !== 99)) && (
-            <Button
-              className={classes.headerButton}
-              style={{ margin: '0 10px 0 70px' }}
-            >
-              企业端
-            </Button>
-          )}
-          <Button
-            className={classes.headerButton}
-            onClick={() => window.open(process.env.REACT_APP_JICAI_URL)}
-          >
-            立即设计
-          </Button>
-
           <div ref={div_ref} className={classes.avatar} onClick={goLogin}>
             <Badge
               count={total}
